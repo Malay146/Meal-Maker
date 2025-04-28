@@ -15,7 +15,7 @@
         <div class="container">
             <div class="login">
                 <h1>Sign In</h1>
-                <form method="post" id="loginForm">
+                <form method="post" id="loginForm" action="/auth/login">
                     <input type="email" name="email" id="loginEmail" placeholder="Email" required>
                     <input type="password" name="password" id="loginPassword" placeholder="Password" required>
                     <a href="http://localhost:3000/forget-password">Forgot your password ? </a>
@@ -24,7 +24,7 @@
             </div>
             <div class="signup">
                 <h1>Sign Up</h1>
-                <form method="post" id="signupForm">
+                <form method="post" id="signupForm" action="/auth/signup">
                     <input type="text" name="name" id="signupUsername" placeholder="Username">
                     <input type="email" name="email" id="signupEmail" placeholder="Email">
                     <input type="password" name="password" id="signupPassword" placeholder="Password">
