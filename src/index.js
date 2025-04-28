@@ -1,6 +1,49 @@
 
+// require("dotenv").config();
+
+// const { app }  = require("./app");
+// const bodyParser = require("body-parser");
+// const cors = require("cors");
+// const AuthRouter = require("./routes/AuthRouter");
+
+// const PORT = process.env.PORT || 3000;
+
+// app.use(bodyParser.json());  // Parses JSON bodies
+// app.use(bodyParser.urlencoded({ extended: true })); // Parses form data
+// app.use(cors());
+
+// app.get("/", (req, res) => {
+//     res.render("account.ejs");
+// });
+
+// app.use("/auth", AuthRouter);
+
+// app.get("/home", (req, res) => {
+//     res.render("temp_index.ejs");
+// });
+
+// app.get("/ls", (req, res) => {
+//     res.render("account.ejs");
+// });
+
+// app.get("/forget-password", (req, res) => {
+//     res.render("forget-reset.ejs");
+// });
+
+// app.get("/reset-password", (req, res) => {
+//     res.render("reset.ejs");
+// });
+
+// // app.listen(PORT, () => {
+// //     console.log(`Server is running on port ${PORT}`);
+// // });
+
+// module.exports = app;
+
 require("dotenv").config();
 
+const express = require('express');
+const path = require('path');
 const { app }  = require("./app");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -8,35 +51,38 @@ const AuthRouter = require("./routes/AuthRouter");
 
 const PORT = process.env.PORT || 3000;
 
-app.use(bodyParser.json());  // Parses JSON bodies
-app.use(bodyParser.urlencoded({ extended: true })); // Parses form data
+// Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
+// EJS View Engine Setup
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '../views'));
+
+// Routes
 app.get("/", (req, res) => {
-    res.render("account.ejs");
+    res.render("account");
 });
 
 app.use("/auth", AuthRouter);
 
 app.get("/home", (req, res) => {
-    res.render("temp_index.ejs");
+    res.render("temp_index");
 });
 
 app.get("/ls", (req, res) => {
-    res.render("account.ejs");
+    res.render("account");
 });
 
 app.get("/forget-password", (req, res) => {
-    res.render("forget-reset.ejs");
+    res.render("forget-reset");
 });
 
 app.get("/reset-password", (req, res) => {
-    res.render("reset.ejs");
+    res.render("reset");
 });
 
-// app.listen(PORT, () => {
-//     console.log(`Server is running on port ${PORT}`);
-// });
-
+// Do not listen to a port
+// Just export app
 module.exports = app;
-module.exports.handler = require('@vercel/node')(app);
