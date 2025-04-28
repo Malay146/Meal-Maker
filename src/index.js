@@ -38,4 +38,5 @@ app.get("/reset-password", (req, res) => {
 //     console.log(`Server is running on port ${PORT}`);
 // });
 
-module.exports = app;
+module.exports = app;
+module.exports.handler = require('@vercel/node')(app);
